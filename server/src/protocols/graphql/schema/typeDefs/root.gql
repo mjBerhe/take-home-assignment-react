@@ -1,0 +1,32 @@
+scalar DateTime
+
+type Query {
+    # Protected query.
+    user(id: ID!): User
+    # Producted query.
+    products: [Product!]!
+}
+
+type Mutation {
+    authenticate(email: String!, password: String!): Session!
+    refreshSession(accessToken: String!, refreshToken: String!): Session!
+}
+
+type User {
+    id: ID!
+    email: String!
+}
+
+type Session {
+    accessToken: String!
+    refreshToken: String!
+    expiresAt: DateTime!
+}
+
+type Product {
+    id: ID!
+    title: String!
+    description: String!
+    price: Float!
+    currency: String!
+}

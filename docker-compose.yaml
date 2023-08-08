@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: ./app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app/src:/app/src
+      - ./app/public:/app/public
+    environment:
+      CI: "true"
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server/src:/app/src
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_DSN: postgresql://postgres:@postgres:5432/dev?sslmode=disable
+
+  postgres:
+    image: postgres:14
+    ports: [5432]
+    volumes:
+      - ./database.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_DB: dev
+      POSTGRES_HOST_AUTH_METHOD: trust
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

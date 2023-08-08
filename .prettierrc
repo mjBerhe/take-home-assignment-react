@@ -1,0 +1,16 @@
+{
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120,
+    "arrowParens": "avoid",
+    "overrides": [
+        {
+            "files": "*.yaml",
+            "options": {
+                "singleQuote": false,
+                "tabWidth": 2
+            }
+        }
+    ]
+}
