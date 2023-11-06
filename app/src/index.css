@@ -2,10 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 400;
+  src: url("assets/fonts/SourceSansPro-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  src: url("assets/fonts/SourceSansPro-Semibold.woff2") format("woff2"),
+    url("assets/fonts/circularstd-light-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 700;
+  src: url("assets/fonts/SourceSansPro-Bold.woff") format("woff");
+}
+
 html,
 body {
   margin: 0;
   height: 100%;
   min-height: 100vh;
-  background: #1f2847;
+  background: #f4f4f4;
+  font-family: "Source Sans Pro";
 }
