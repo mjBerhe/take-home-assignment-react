@@ -2,14 +2,12 @@ version: "3.8"
 services:
   app:
     build:
-      ./app
-      # context: ./app
+      context: ./app
     ports:
       - "3000:3000"
-    # volumes:
-    #   - ./app/src:/app/src
-    #   - ./app/node_modules
-    #   - ./app/public:/app/public
+    volumes:
+      - ./app/src:/app/src
+      - ./app/public:/app/public
     tty: true
     environment:
       CI: "true"
